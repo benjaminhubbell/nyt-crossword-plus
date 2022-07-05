@@ -11,13 +11,11 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": [
-    "activeTab"
-  ],
   "content_scripts": [
     {
+      "run_at": "document_end",
       "matches": [
-        "<all_urls>"
+        "https://www.nytimes.com/crosswords/*"
       ],
       "js": [
         "contentScript.js"
@@ -30,6 +28,12 @@
         "default": "Alt+P"
       },
       "description": "Toggle pencil mode"
+    },
+    "toggle-body-lock": {
+      "suggested_key": {
+        "default": "Alt+L"
+      },
+      "description": "Toggle body lock"
     }
   }
 }
