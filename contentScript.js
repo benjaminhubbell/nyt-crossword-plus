@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const a = 2;
+  
   let body = document.body;
   let toggleBodyLockSelector = "#toggle-body-lock";
   let toolbarToolsSelector = "ul.xwd__toolbar--tools"
