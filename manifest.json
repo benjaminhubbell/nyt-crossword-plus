@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Nyt Crossword Plus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Chrome extension with quality of life improvements for doing the New York Times crossword puzzle",
   "icons": {
     "16": "icons/icon_16.png",

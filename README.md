@@ -2,6 +2,8 @@
 Chrome extension with quality of life improvements for doing the New York Times crossword puzzle.
 
 # Getting Started
+## Quick Installation
+Visit the [chrome web store page](https://chrome.google.com/webstore/detail/nyt-crossword-plus/nancpekcbiibjeghomghkbbagnbbpdlp) to install.
 ## Manual Installation
 1. Download zip (Code Button > Download ZIP)
 2. Extract zip to desired location
