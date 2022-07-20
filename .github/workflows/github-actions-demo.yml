@@ -17,5 +17,5 @@ jobs:
         run: zip ${{ github.workspace }}/nyt-crossword-plus ${{ github.workspace }}/manifest.json ${{ github.workspace }}/background.js ${{ github.workspace }}/contentScript.js icons
       - run: ls ${{ github.workspace }}
       - run: npm install -g chrome-webstore-upload
-      - run: chrome-webstore-upload
+      - run: npx chrome-webstore-upload
       - run: echo "🍏 This job's status is ${{ job.status }}."
