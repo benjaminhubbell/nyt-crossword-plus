@@ -7,7 +7,7 @@ jobs:
       - name: Install zip
         run: sudo apt-get install zip
       - name: Create zip file
-        run: zip ${{ github.workspace }}/nyt-crossword-plus manifest.json background.js contentScript.js icons
+        run: zip ${{ github.workspace }}/nyt-crossword-plus ${{ github.workspace }}/manifest.json ${{ github.workspace }}/background.js ${{ github.workspace }}/contentScript.js icons
       - run: ls ${{ github.workspace }}
       - name: Check out repository code
         uses: actions/checkout@v3
