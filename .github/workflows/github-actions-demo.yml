@@ -23,5 +23,5 @@ jobs:
       - run: ls
       # - name: Upload Chrome Extension
       #   
-      - run: chrome-webstore-upload upload --extension-id nancpekcbiibjeghomghkbbagnbbpdlp --refresh-token abcdefg
+      - run: chrome-webstore-upload upload --extension-id nancpekcbiibjeghomghkbbagnbbpdlp --client-id $CLIENT_ID --client-secret $CLIENT_SECRET
       - run: echo "🍏 This job's status is ${{ job.status }}."
