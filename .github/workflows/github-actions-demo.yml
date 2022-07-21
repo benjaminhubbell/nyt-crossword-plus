@@ -23,5 +23,5 @@ jobs:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-        run: chrome-webstore-upload upload
+      - run: chrome-webstore-upload upload
       - run: echo "🍏 This job's status is ${{ job.status }}."
