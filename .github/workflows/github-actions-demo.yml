@@ -18,7 +18,7 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - name: Create zip file
-        run: zip ${{ github.workspace }}/nyt-crossword-plus ${{ github.workspace }}/manifest.json ${{ github.workspace }}/background.js ${{ github.workspace }}/contentScript.js icons
+        run: zip -r ${{ github.workspace }}/nyt-crossword-plus ${{ github.workspace }}/manifest.json ${{ github.workspace }}/background.js ${{ github.workspace }}/contentScript.js icons
       - run: ls ${{ github.workspace }}
       - run: npm install -g chrome-webstore-upload-cli
       - run: ls
