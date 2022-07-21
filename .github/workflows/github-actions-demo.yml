@@ -3,8 +3,8 @@ on: [push]
 env:
   EXTENSION_ID: "nancpekcbiibjeghomghkbbagnbbpdlp"
   CLIENT_ID: ${{ secrets.CLIENT_ID }}
-#   CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-#   REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
