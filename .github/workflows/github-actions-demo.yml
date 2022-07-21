@@ -29,5 +29,5 @@ jobs:
           echo ${#CLIENT_SECRET}
           echo ${#REFRESH_TOKEN}
           echo $CLIENT_ID
-          chrome-webstore-upload upload --extension-id "$EXTENSION_ID" --client-id "$CLIENT_ID"
+          chrome-webstore-upload upload
       - run: echo "🍏 This job's status is ${{ job.status }}."
