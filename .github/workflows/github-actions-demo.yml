@@ -23,5 +23,5 @@ jobs:
       - run: ls
       # - name: Upload Chrome Extension
       #   
-      - run: chrome-webstore-upload upload --source nyt-crossword-plus.zip --extension-id nancpekcbiibjeghomghkbbagnbbpdlp --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
+      - run: chrome-webstore-upload upload --source nyt-crossword-plus.zip --extension-id nancpekcbiibjeghomghkbbagnbbpdlp --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token "$REFRESH_TOKEN"
       - run: echo "🍏 This job's status is ${{ job.status }}."
