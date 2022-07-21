@@ -1,5 +1,10 @@
 name: GitHub Actions Demo
 on: [push]
+env:
+  EXTENSION_ID: "nancpekcbiibjeghomghkbbagnbbpdlp"
+  CLIENT_ID: ${{ secrets.CLIENT_ID }}
+  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -17,11 +22,6 @@ jobs:
       - run: npm install -g chrome-webstore-upload-cli
       - run: ls
       # - name: Upload Chrome Extension
-      #   env:
-      #     # TEST_SECRET: ${{ secrets.TEST_SECRET }}
-      #     EXTENSION_ID: "nancpekcbiibjeghomghkbbagnbbpdlp"
-      #     CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      #     CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-      #     REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-      - run: chrome-webstore-upload upload
+      #   
+      - run: chrome-webstore-upload upload --extension-id $EXTENSION_ID
       - run: echo "🍏 This job's status is ${{ job.status }}."
