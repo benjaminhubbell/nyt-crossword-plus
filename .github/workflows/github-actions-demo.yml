@@ -23,5 +23,5 @@ jobs:
       - run: ls
       # - name: Upload Chrome Extension
       #   
-      - run: chrome-webstore-upload upload --extension-id $EXTENSION_ID
+      - run: chrome-webstore-upload upload --extension-id abcdefg
       - run: echo "🍏 This job's status is ${{ job.status }}."
