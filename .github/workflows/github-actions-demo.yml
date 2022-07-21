@@ -4,6 +4,7 @@ env:
   EXTENSION_ID: "nancpekcbiibjeghomghkbbagnbbpdlp"
   CLIENT_ID: ${{ secrets.CLIENT_ID }}
   CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
   # TEST_SECRET: ${{ secrets.TEST_SECRET }}
 jobs:
   Explore-GitHub-Actions:
