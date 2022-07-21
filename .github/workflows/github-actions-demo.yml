@@ -26,5 +26,7 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_ID }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
         # run: echo "${#TEST_SECRET}"
-        run: chrome-webstore-upload upload --source nyt-crossword-plus.zip --extension-id=$EXTENSION_ID --client-id=$CLIENT_ID --client-secret=$CLIENT_SECRET --refresh-token=$REFRESH_TOKEN
+        run: |
+          echo ${#CLIENT_ID}
+          chrome-webstore-upload upload --source nyt-crossword-plus.zip --extension-id=$EXTENSION_ID --client-id=$CLIENT_ID --client-secret=$CLIENT_SECRET --refresh-token=$REFRESH_TOKEN
       - run: echo "🍏 This job's status is ${{ job.status }}."
