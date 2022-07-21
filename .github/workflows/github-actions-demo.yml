@@ -20,7 +20,7 @@ jobs:
       - name: Upload Chrome Extension
         env: 
           EXTENSION_ID: "nancpekcbiibjeghomghkbbagnbbpdlp"
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_IDD }}
           CLIENT_SECRET: ${{ secrets.CLIENT_ID }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
         run: echo "$CLIENT_ID"
