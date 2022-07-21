@@ -29,5 +29,5 @@ jobs:
           echo ${#CLIENT_SECRET}
           echo ${#REFRESH_TOKEN}
           echo $CLIENT_ID
-          chrome-webstore-upload upload --source nyt-crossword-plus.zip --extension-id "$EXTENSION_ID" --client-id "$CLIENT_ID" --client-secret "$CLIENT_SECRET" --refresh-token "$REFRESH_TOKEN"
+          chrome-webstore-upload upload --extension-id "$EXTENSION_ID" --client-id "$CLIENT_ID"
       - run: echo "🍏 This job's status is ${{ job.status }}."
