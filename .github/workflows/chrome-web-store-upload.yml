@@ -1,0 +1,27 @@
+name: Chrome Web Store Upload
+on: [push]
+env:
+  EXTENSION_ID: "nancpekcbiibjeghomghkbbagnbbpdlp"
+  CLIENT_ID: ${{ secrets.CLIENT_ID }}
+  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+jobs:
+  Chrome-Web-Store-Upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install zip
+        run: sudo apt-get install zip
+      - name: Install Chrome Web Store Upload CLI
+        run: npm install -g chrome-webstore-upload-cli
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Create zip file
+        run: zip -r nyt-crossword-plus manifest.json background.js contentScript.js --include icon_*.png
+      - name: Upload chrome extension
+        run: |
+          chrome-webstore-upload upload \
+            --source nyt-crossword-plus.zip \
+            --extension-id nancpekcbiibjeghomghkbbagnbbpdlp \
+            --client-id $CLIENT_ID \
+            --client-secret $CLIENT_SECRET \
+            --refresh-token "$REFRESH_TOKEN"
