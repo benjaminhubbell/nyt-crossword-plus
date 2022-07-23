@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
       - run: ls
       - name: Create zip file
-        run: zip -r nyt-crossword-plus manifest.json background.js contentScript.js
+        run: zip -r nyt-crossword-plus manifest.json background.js contentScript.js --include \icon_*.png
       - name: Upload chrome extension
         run: |
           chrome-webstore-upload upload \
