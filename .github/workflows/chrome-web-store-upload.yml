@@ -25,5 +25,11 @@ jobs:
             --extension-id nancpekcbiibjeghomghkbbagnbbpdlp \
             --client-id $CLIENT_ID \
             --client-secret $CLIENT_SECRET \
-            --refresh-token "$REFRESH_TOKEN \
-            --auto-publish"
+            --refresh-token "$REFRESH_TOKEN"
+      - name: Publish chrome extension
+        run: |
+          chrome-webstore-upload publish \
+            --extension-id nancpekcbiibjeghomghkbbagnbbpdlp \
+            --client-id $CLIENT_ID \
+            --client-secret $CLIENT_SECRET \
+            --refresh-token "$REFRESH_TOKEN"
