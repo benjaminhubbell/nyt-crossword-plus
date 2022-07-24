@@ -2,15 +2,17 @@
   "use strict";
   
   let body = document.body;
+  let boardTitleSelector = "#boardTitle";
   let toggleBodyLockSelector = "#toggle-body-lock";
-  let toolbarToolsSelector = "ul.xwd__toolbar--tools"
+  let toolbarToolsSelector = "ul.xwd__toolbar--tools";
+  let settingsPanelSelector = "#settings-panel";
   let pencilSelectors = [
     ".xwd__toolbar_icon--pencil",
     ".xwd__toolbar_icon--pencil-active"
   ];
+  let boardTitle = "Puzzle Board";
   var methods = {
     "init": () => {
-      
       chrome.runtime.onMessage.addListener(
         function(request, sender, sendResponse) {
           if (request.action === "toggle-pencil") {
@@ -22,26 +24,19 @@
         }
       );
 
-      methods.waitForElement(toolbarToolsSelector, 0).then(function(){
-        var div = document.createElement("div");
+      // Create lock button
+      methods.waitForElement(toolbarToolsSelector, 0).then(function() {
+        
+        methods.createLockButton();
+        methods.adjustSettingsPanel();
+        //console.log(document.getElementsByClassName("xwd__tool--button")[0]);
+        
+      });
 
-        var li = document.createElement("li");
-        li.className = "xwd__tool--button";
-
-        var button = document.createElement("button");
-        button.id = "toggle-body-lock";
-        button.type = "button";
-        button.ariaLabel = "Lock Body Scroll";
-        button.innerHTML = "Lock";
-        button.dataset.lockStatus = "unlocked";
-
-        li.appendChild(button);
-        div.appendChild(li).onclick;
-        div.onclick = methods.toggleBodyLock;
-
-        var parentElement = document.querySelector("ul.xwd__toolbar--tools");
-        parentElement.insertBefore(div, parentElement.children[1]);
-    });
+      // Disable board title
+      methods.waitForElement("#xwd-board", 0).then(function() {
+        document.querySelector(boardTitleSelector).innerHTML = "";
+      });
 
     },
     "toggleBodyLock": () => {
@@ -49,7 +44,7 @@
 
       if (button.dataset.lockStatus == "unlocked"){
         body.style.overflow = "hidden";
-        button.innerHTML = "Unlock";
+        button.innerText = "Unlock";
         button.style.width = "63px";
         button.dataset.lockStatus = "locked";
         button.style.background = "#4f85e5";
@@ -57,7 +52,7 @@
       }
       else {
         body.style.overflow = "";
-        button.innerHTML = "Lock";
+        button.innerText = "Lock";
         button.dataset.lockStatus = "unlocked";
         button.style.width = "45px";
         
@@ -84,6 +79,77 @@
           observer.disconnect();
           reject();
         }, timeout);
+      });
+    },
+    "createLockButton": () => {
+      var parentElement = document.querySelector("ul.xwd__toolbar--tools");
+      var div = document.createElement("div");
+      var li = document.createElement("li");
+      var button = document.createElement("button");
+      
+      button.id = "toggle-body-lock";
+      button.type = "button";
+      button.ariaLabel = "Lock Body Scroll";
+      button.innerHTML = "Lock";
+      button.dataset.lockStatus = "unlocked";
+      
+      li.className = "xwd__tool--button";
+      li.appendChild(button);
+      
+      div.appendChild(li).onclick;
+      div.onclick = methods.toggleBodyLock;
+
+      parentElement.insertBefore(div, parentElement.children[1]);
+    },
+    "adjustSettingsPanel": () => {
+      document.getElementsByClassName("xwd__tool--button")[0].addEventListener("click", function() {
+        methods.waitForElement(settingsPanelSelector, 0).then(function() {
+          var settingsColumns =  document.getElementsByClassName("xwd__settings-modal--column");
+          var settingsColumn0 = settingsColumns[0];
+          var settingsColumn1 = settingsColumns[1];
+          var settingsColumn1Length = settingsColumn1.children.length
+
+          for (var i = 0; i < settingsColumn1Length; i++) {
+            settingsColumn0.appendChild(settingsColumn1.children[0]);
+          }
+
+          settingsColumn0.className = "xwd__settings-modal";
+          settingsColumn1.remove();
+
+          // var section = document.createElement("section");
+          // var header = document.createElement("header");
+          // var insetDiv = document.createElement("div");
+          // var boardTitleSettingLabel = document.createElement("label");
+          // var boardTitleSettingInput = document.createElement("input");
+          // var boardTitleSettingSpan = document.createElement("span");
+
+          // section.className = "xwd__settings-modal--section";
+          // header.className = "xwd__settings-modal--heading";
+          // header.innerText = "NYT Crossword Plus Settings";
+          // insetDiv.className = "xwd__settings-modal--inset"
+          // boardTitleSettingInput.type = "checkbox";
+          // boardTitleSettingInput.setAttribute("name", "checkbox");
+          // boardTitleSettingInput.setAttribute("tabindex", "0");
+          // boardTitleSettingInput.setAttribute("readonly", true);
+          // boardTitleSettingInput.setAttribute("value", true);
+          // boardTitleSettingInput.setAttribute("checked", true);
+          // boardTitleSettingSpan.innerText = "Hide board tooltip"
+          // boardTitleSettingLabel.appendChild(boardTitleSettingInput);
+          // boardTitleSettingLabel.appendChild(boardTitleSettingSpan);
+          // insetDiv.appendChild(boardTitleSettingLabel);
+          // section.appendChild(header);
+          // section.appendChild(insetDiv);
+          // settingsColumn0.appendChild(section);
+
+          // boardTitleSettingInput.addEventListener("change", (event) => {
+          //   if (event.currentTarget.checked) {
+          //     document.querySelector(boardTitleSelector).innerHTML = "";
+          //   }
+          //   else {
+          //     document.querySelector(boardTitleSelector).innerHTML = boardTitle;
+          //   }
+          // });
+        });
       });
     }
   }
